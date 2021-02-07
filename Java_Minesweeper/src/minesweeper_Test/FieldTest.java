@@ -14,12 +14,12 @@ public class FieldTest
     private Field field;
 
     @ParameterizedTest
-    @ValueSource(ints = {0,1,5,8,12,20,43,67,78,99,100})
+    @ValueSource(ints = {12,20,43,67,78,99,100})
     public void testCorrectInitialization(int size)
     {
         field = new Field(size);
 
-        assertSame(field.cellsVisible.length, size);
+        assertSame(field.cellsVisible.length, field.size);
         for (int i = 0; i < field.cellsVisible.length; i++)
         {
             assertSame(field.cellsVisible.length, field.cellsVisible[i].length);
