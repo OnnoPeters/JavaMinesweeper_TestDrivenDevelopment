@@ -36,6 +36,6 @@ public class FieldTest
     {
         field = new Field(size);
 
-        assertTrue(size == field.max || size == field.min);
+        assertTrue(field.size == field.max || field.size == field.min);
     }
 }
