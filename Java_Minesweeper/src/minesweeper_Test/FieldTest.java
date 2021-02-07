@@ -20,14 +20,11 @@ public class FieldTest
     @Test
     public void testCorrectInitialization()
     {
-        assertSame(field.cellsHidden.length == field.cellsVisible.length)
-        for (int i = 0; i < field.cellsHidden.length; i++)
+        for (int i = 0; i < field.cellsVisible.length; i++)
         {
-            assertSame(field.cellsHidden.length, field.cellsHidden[i].length);
             assertSame(field.cellsVisible.length, field.cellsVisible[i].length);
-            for (int j = 0; j < field.cellsHidden.length; j++)
+            for (int j = 0; j < field.cellsVisible.length; j++)
             {
-                assertEquals(0, field.cellsHidden[i][j]);
                 assertEquals("*", field.cellsVisible[i][j]);
             }
         }
