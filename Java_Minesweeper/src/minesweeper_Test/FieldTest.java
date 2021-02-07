@@ -69,7 +69,7 @@ public class FieldTest
                            }
                        }
                    }
-                   assertTrue(field.getNumberAtLocation(i,j) == countNeighbouringMines);
+                    assertEquals(countNeighbouringMines, field.getNumberAtLocation(i, j));
                 }
 
             }
