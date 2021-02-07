@@ -19,7 +19,6 @@ public class FieldTest
     {
         field = new Field(size);
 
-        assertEquals(100, field.max);
         assertSame(field.cellsVisible.length, size);
         for (int i = 0; i < field.cellsVisible.length; i++)
         {
@@ -29,5 +28,14 @@ public class FieldTest
                 assertEquals("*", field.cellsVisible[i][j]);
             }
         }
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {-12, 10000, -5354})
+    public void testInvalidValues(int size)
+    {
+        field = new Field(size);
+
+        assertTrue(size == field.max || size == field.min);
     }
 }
