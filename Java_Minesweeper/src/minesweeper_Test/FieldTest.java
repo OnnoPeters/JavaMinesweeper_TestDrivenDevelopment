@@ -3,6 +3,8 @@ package minesweeper_Test;
 import minesweeper_Code.Field;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,15 +13,14 @@ public class FieldTest
 
     private Field field;
 
-    @BeforeEach
-    public void initField()
+    @ParameterizedTest
+    @ValueSource(ints = {0,1,5,8,12,20,43,67,78,99,100})
+    public void testCorrectInitialization(int size)
     {
-        field = new Field();
-    }
+        field = new Field(size);
 
-    @Test
-    public void testCorrectInitialization()
-    {
+        assertEquals(100, field.max);
+        assertSame(field.cellsVisible.length, size);
         for (int i = 0; i < field.cellsVisible.length; i++)
         {
             assertSame(field.cellsVisible.length, field.cellsVisible[i].length);
