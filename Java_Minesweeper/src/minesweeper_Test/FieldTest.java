@@ -63,7 +63,7 @@ public class FieldTest
                    {
                        for(int m = j-1; m <= j+1; m++)
                        {
-                           if(k > 0 && m > 0 && k < field.cellsVisible.length && m < field.cellsVisible[k].length && field.getNumberAtLocation(k,m) == -1)
+                           if(k >= 0 && m >= 0 && k < field.cellsVisible.length && m < field.cellsVisible[k].length && field.getNumberAtLocation(k,m) == -1)
                            {
                                countNeighbouringMines++;
                            }
