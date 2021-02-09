@@ -99,7 +99,7 @@ public class Field
                 numberOfMinesSet++;
             }
         }
-        printField();
+        printHiddenField();
 
     }
 
@@ -127,13 +127,25 @@ public class Field
         }
     }
 
-    public void printField()
+    public void printHiddenField()
     {
         for(int i = 0; i < this.getSize(); i++)
         {
             for(int j = 0; j < this.getSize(); j++)
             {
                 System.out.print(this.cellsHidden[i][j] + " ");
+            }
+            System.out.print("\n");
+        }
+    }
+
+    public void printVisibleField()
+    {
+        for(int i = 0; i < this.getSize(); i++)
+        {
+            for(int j = 0; j < this.getSize(); j++)
+            {
+                System.out.print(this.cellsVisible[i][j] + " ");
             }
             System.out.print("\n");
         }
