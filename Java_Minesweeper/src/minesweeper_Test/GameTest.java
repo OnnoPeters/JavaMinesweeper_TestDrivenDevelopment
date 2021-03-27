@@ -45,7 +45,7 @@ public class GameTest
         }
         else
         {
-            assertTrue(loc1 >= game.field.getSize() || loc2 >= game.field.getSize() || loc1 < 0 || loc2 < 0);
+            assertTrue(loc1 >= game.field.getSize() || loc2 >= game.field.getSize() || loc1 < 0 || loc2 < 0 || game.getEndingStatus());
         }
     }
 
@@ -71,7 +71,7 @@ public class GameTest
             }
             else
             {
-                assertTrue(loc1 >= game.field.getSize() || loc2 >= game.field.getSize() || loc1 < 0 || loc2 < 0);
+                assertTrue(loc1 >= game.field.getSize() || loc2 >= game.field.getSize() || loc1 < 0 || loc2 < 0 || game.getEndingStatus());
             }
         }
     }
