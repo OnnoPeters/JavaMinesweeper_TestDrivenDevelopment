@@ -99,7 +99,6 @@ public class Field
                 numberOfMinesSet++;
             }
         }
-        printHiddenField();
 
     }
 
@@ -149,5 +148,15 @@ public class Field
             }
             System.out.print("\n");
         }
+    }
+
+    public String getVisibleCellAtLocation(int loc1, int loc2)
+    {
+        return this.cellsVisible[loc1][loc2];
+    }
+
+    public void setVisibleCellAtLocation(int loc1, int loc2, String valueToBeSet)
+    {
+        this.cellsVisible[loc1][loc2] = valueToBeSet;
     }
 }
