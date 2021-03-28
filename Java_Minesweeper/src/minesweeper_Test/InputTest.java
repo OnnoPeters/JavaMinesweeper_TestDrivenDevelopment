@@ -12,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class InputTest
 {
-    private Game game;
     private Input input;
     private int rand_size;
     private int rand_mines;
@@ -51,8 +50,13 @@ public class InputTest
         input.enterMines(rand_mines);
         if(input.validateInput())
         {
-            game = input.startGame();
+            Game game = input.startGame();
             assertNotNull(game);
+        }
+        else
+        {
+            Game game = input.startGame();
+            assertNull(game);
         }
 
     }
