@@ -3,6 +3,7 @@ package minesweeper_Test;
 import minesweeper_Code.Game;
 import minesweeper_Code.Input;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -44,6 +45,7 @@ public class InputTest
         }
     }
 
+    @Test
     public void testStartGame()
     {
         input.enterSize(rand_size);
