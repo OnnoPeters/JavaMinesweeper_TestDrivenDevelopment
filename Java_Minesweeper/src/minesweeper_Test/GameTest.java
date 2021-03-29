@@ -30,9 +30,9 @@ public class GameTest
     public void testAction(int loc1, int loc2)
     {
         boolean valid = game.isValid(loc1, loc2);
-        int numberAtLocation = game.action(loc1,loc2);
         if(valid)
         {
+            int numberAtLocation = game.action(loc1,loc2);
             if (numberAtLocation != - 1)
             {
                 assertEquals(String.valueOf(numberAtLocation), game.field.getVisibleCellAtLocation(loc1, loc2));
