@@ -77,4 +77,23 @@ public class Game
     {
         setEndingStatus(true);
     }
+
+    public void revealField()
+    {
+        for(int i = 0; i < field.getSize(); i++)
+        {
+            for (int j = 0; j < field.getSize(); j++)
+            {
+                int number = field.getNumberAtLocation(i,j);
+                if(number != -1)
+                {
+                    field.setVisibleCellAtLocation(i,j, String.valueOf(number));
+                }
+                else
+                {
+                    field.setVisibleCellAtLocation(i,j, "X");
+                }
+            }
+        }
+    }
 }
