@@ -91,4 +91,25 @@ public class GameTest
         assertTrue(game.getEndingStatus());
         assertTrue(game.getWinningStatus());
     }
+
+    @Test
+    public void testRevealField()
+    {
+        game.revealField();
+        for(int i = 0; i < game.field.getSize(); i++)
+        {
+            for(int j = 0; j < game.field.getSize(); j++)
+            {
+                if(game.field.getNumberAtLocation(i,j) != -1)
+                {
+                    assertEquals(String.valueOf(game.field.getVisibleCellAtLocation(i,j)), game.field.getVisibleCellAtLocation(i,j));
+                }
+                else
+                {
+                    assertEquals(String.valueOf(game.field.getVisibleCellAtLocation(i,j)), "X");
+                }
+            }
+        }
+
+    }
 }
