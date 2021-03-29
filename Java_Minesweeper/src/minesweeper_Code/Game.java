@@ -71,11 +71,13 @@ public class Game
     {
         setEndingStatus(true);
         setWinningStatus(true);
+        revealField();
     }
 
     public void endGameUnsuccessfully()
     {
         setEndingStatus(true);
+        revealField();
     }
 
     public void revealField()
