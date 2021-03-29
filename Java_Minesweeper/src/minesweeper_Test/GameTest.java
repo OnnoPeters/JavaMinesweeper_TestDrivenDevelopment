@@ -29,12 +29,13 @@ public class GameTest
     @CsvSource({"10,65", "5,2", "1,3", "54, 21", "77, 0", "0,0", "65,57"})
     public void testAction(int loc1, int loc2)
     {
-        boolean valid = game.action(loc1, loc2);
+        boolean valid = game.isValid(loc1, loc2);
+        int numberAtLocation = game.action(loc1,loc2);
         if(valid)
         {
-            if (game.field.getNumberAtLocation(loc1, loc2) != - 1)
+            if (numberAtLocation != - 1)
             {
-                assertEquals(String.valueOf(game.field.getNumberAtLocation(loc1, loc2)), game.field.getVisibleCellAtLocation(loc1, loc2));
+                assertEquals(String.valueOf(numberAtLocation), game.field.getVisibleCellAtLocation(loc1, loc2));
             }
             else
             {
@@ -57,10 +58,11 @@ public class GameTest
         for (int i = 0; i < 100; i++) {
             loc1 = randloc.nextInt(size);
             loc2 = randloc.nextInt(size);
-            boolean valid = game.action(loc1, loc2);
+            boolean valid = game.isValid(loc1, loc2);
+            int numberAtLocation = game.action(loc1,loc2);
             if (valid) {
-                if (game.field.getNumberAtLocation(loc1, loc2) != -1) {
-                    assertEquals(String.valueOf(game.field.getNumberAtLocation(loc1, loc2)), game.field.getVisibleCellAtLocation(loc1, loc2));
+                if (numberAtLocation != -1) {
+                    assertEquals(String.valueOf(numberAtLocation), game.field.getVisibleCellAtLocation(loc1, loc2));
                 }
                 else
                 {
