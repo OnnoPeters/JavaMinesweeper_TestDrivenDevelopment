@@ -2,42 +2,51 @@ package minesweeper_Code;
 
 public class Input
 {
-    private int size;
-    private int mines;
+    private String size;
+    private String mines;
     private boolean validated = false;
 
-    public void enterSize(int size)
+    public void enterSize(String size)
     {
         this.size = size;
         this.validated = false;
     }
 
-    public int getSize()
+    public String getSize()
     {
         return size;
     }
 
-    public void enterMines(int mines)
+    public void enterMines(String mines)
     {
         this.mines = mines;
         this.validated = false;
     }
 
-    public int getMines()
+    public String getMines()
     {
         return mines;
     }
 
     public boolean validateInput()
     {
-        if(getSize() <= 100 && getMines() < getSize() * getSize() && getMines() > 0 && getSize() > 0)
+        if(convertToIntPossible())
         {
-            this.validated = true;
-            return true;
+            int intSize = Integer.parseInt(getSize());
+            int intMines = Integer.parseInt(getMines());
+            if (intSize <= 100 && intMines < intSize * intSize && intMines > 0 && intSize > 0)
+            {
+                this.validated = true;
+                return true;
+            }
+            else
+            {
+                this.validated = false;
+                return false;
+            }
         }
         else
         {
-            this.validated = false;
             return false;
         }
     }
@@ -46,11 +55,25 @@ public class Input
     {
         if(validated)
         {
-            return new Game(size, mines);
+            return new Game(Integer.parseInt(size), Integer.parseInt(mines));
         }
         else
         {
             return null;
+        }
+    }
+
+    public boolean convertToIntPossible()
+    {
+        try
+        {
+            int i = Integer.parseInt(size);
+            int j = Integer.parseInt(mines);
+            return true;
+        }
+        catch (NumberFormatException e)
+        {
+            return false;
         }
     }
 }
