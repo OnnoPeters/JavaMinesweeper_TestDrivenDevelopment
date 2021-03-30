@@ -5,6 +5,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -75,5 +78,83 @@ public class FieldTest
             }
         }
         assertTrue(countTotalMines > 0 && countTotalMines < field.getSize() * field.getSize());
+    }
+
+    public void testRevealEmptyCells()
+    {
+        Random rand = new Random();
+        testCorrectInitialization(rand.nextInt(90) + 10);
+        field.setMines(1);
+        int mine_coordinate_x = 0;
+        int mine_coordinate_y = 0;
+        boolean actionPerformed = false;
+        for(int i = 0; i < field.getSize(); i++)
+        {
+            for(int j = 0; j < field.getSize(); j++)
+            {
+                if (field.getNumberAtLocation(i, j) == -1)
+                {
+                    mine_coordinate_x = field.getNumberAtLocation(i,j);
+                    mine_coordinate_y = field.getNumberAtLocation(i,j);
+                    break;
+                }
+                else if(field.getNumberAtLocation(i,j) == 0)
+                {
+                    if(!actionPerformed)
+                    {
+                        field.revealEmptyCells(i,j);
+                        actionPerformed = true;
+                    }
+                }
+            }
+        }
+
+        for(int i = 0; i < field.getSize(); i++)
+        {
+            for (int j = 0; j < field.getSize(); j++)
+            {
+                if(i == mine_coordinate_x && j == mine_coordinate_y)
+                {
+                    assertEquals(field.getVisibleCellAtLocation(i,j), "*");
+                }
+                else if(i >= mine_coordinate_x - 1 && i <= mine_coordinate_x + 1 && j >= mine_coordinate_y - 1 && j <= mine_coordinate_y + 1)
+                {
+                    boolean neighborOfEmptyCell = false;
+                    for(int k = i - 1; k <= i + 1; k++)
+                    {
+                        for(int l = j - 1; k <= j + 1; j++)
+                        {
+                            if(k >= 0 && l >= 0 && k <= field.getSize() && l < field.getSize() && field.getNumberAtLocation(k,l) == 0)
+                            {
+                                neighborOfEmptyCell = true;
+                                break;
+                            }
+                        }
+                        if(neighborOfEmptyCell)
+                        {
+                            break;
+                        }
+                    }
+                    if(neighborOfEmptyCell)
+                    {
+                        assertEquals(field.getVisibleCellAtLocation(i,j), "1");
+                    }
+                    else
+                    {
+                        assertEquals(field.getVisibleCellAtLocation(i,j), "*");
+                    }
+                }
+                else
+                {
+                    assertEquals(field.getVisibleCellAtLocation(i,j), "0");
+                }
+
+            }
+        }
+
+
+
+
+
     }
 }
