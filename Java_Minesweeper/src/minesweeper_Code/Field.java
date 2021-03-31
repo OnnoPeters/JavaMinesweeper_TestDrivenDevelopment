@@ -196,6 +196,25 @@ public class Field
         }
     }
 
+    public boolean needForReveal(int loc1, int loc2)
+    {
+        boolean needReveal = false;
+        for (int i = loc1 - 1; i <= loc1 + 1; i++)
+        {
+            for (int j = loc2 - 1; j <= loc2 + 1; j++)
+            {
+                if(i >= 0 && j >= 0 && i < this.getSize() && j < this.getSize())
+                {
+                    if(this.getNumberAtLocation(i,j) == 0)
+                    {
+                        needReveal = true;
+                    }
+                }
+            }
+        }
+        return needReveal;
+    }
+
     public int countCellsLeft()
     {
         int countCellsleft = 0;
