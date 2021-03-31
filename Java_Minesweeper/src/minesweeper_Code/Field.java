@@ -183,7 +183,7 @@ public class Field
                             listOfy_values.add(j);
                             this.setVisibleCellAtLocation(i, j, String.valueOf(this.getNumberAtLocation(i, j)));
                         }
-                        else
+                        else if(this.getNumberAtLocation(listOfx_values.get(0), listOfy_values.get(0)) == 0)
                         {
                             this.setVisibleCellAtLocation(i, j, String.valueOf(this.getNumberAtLocation(i, j)));
                         }
