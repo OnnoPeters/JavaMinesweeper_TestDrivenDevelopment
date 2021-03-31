@@ -1,5 +1,6 @@
 package minesweeper_Code;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Field
@@ -158,5 +159,56 @@ public class Field
     public void setVisibleCellAtLocation(int loc1, int loc2, String valueToBeSet)
     {
         this.cellsVisible[loc1][loc2] = valueToBeSet;
+    }
+
+    public void revealEmptyCells(int loc1, int loc2)
+    {
+        ArrayList<Integer> listOfx_values = new ArrayList<>();
+        ArrayList<Integer> listOfy_values = new ArrayList<>();
+        listOfx_values.add(loc1);
+        listOfy_values.add(loc2);
+        while(listOfx_values.size() > 0 && listOfy_values.size() > 0)
+        {
+            this.setVisibleCellAtLocation(listOfx_values.get(0), listOfy_values.get(0), String.valueOf(this.getNumberAtLocation(listOfx_values.get(0), listOfy_values.get(0))));
+            for(int i = listOfx_values.get(0) - 1; i <= listOfx_values.get(0) + 1; i++)
+            {
+                for(int j = listOfy_values.get(0) - 1; j <= listOfy_values.get(0) + 1; j++)
+                {
+
+                    if(i >= 0 && j >= 0 && i < this.getSize() && j < this.getSize() && getVisibleCellAtLocation(i,j).equals("*"))
+                    {
+                        if(this.getNumberAtLocation(i,j) == 0)
+                        {
+                            listOfx_values.add(i);
+                            listOfy_values.add(j);
+                            this.setVisibleCellAtLocation(i, j, String.valueOf(this.getNumberAtLocation(i, j)));
+                        }
+                        else
+                        {
+                            this.setVisibleCellAtLocation(i, j, String.valueOf(this.getNumberAtLocation(i, j)));
+                        }
+                    }
+
+                }
+            }
+            listOfx_values.remove(0);
+            listOfy_values.remove(0);
+        }
+    }
+
+    public int countCellsLeft()
+    {
+        int countCellsleft = 0;
+        for(int i = 0; i < this.getSize(); i++)
+        {
+            for(int j = 0; j < this.getSize(); j++)
+            {
+                if(this.cellsVisible[i][j].equals("*"))
+                {
+                    countCellsleft++;
+                }
+            }
+        }
+        return countCellsleft;
     }
 }
