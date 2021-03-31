@@ -58,6 +58,11 @@ public class Game
             this.field.setVisibleCellAtLocation(loc1, loc2, "X");
             endGameUnsuccessfully();
         }
+        else if(numberAtLoc == 0)
+        {
+            this.field.revealEmptyCells(loc1,loc2);
+            this.cellsLeft = field.countCellsLeft();
+        }
         else
         {
             this.field.setVisibleCellAtLocation(loc1, loc2, String.valueOf(numberAtLoc));
