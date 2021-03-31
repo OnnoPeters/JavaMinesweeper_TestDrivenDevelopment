@@ -80,6 +80,7 @@ public class FieldTest
         assertTrue(countTotalMines > 0 && countTotalMines < field.getSize() * field.getSize());
     }
 
+    @Test
     public void testRevealEmptyCells()
     {
         Random rand = new Random();
@@ -94,8 +95,8 @@ public class FieldTest
             {
                 if (field.getNumberAtLocation(i, j) == -1)
                 {
-                    mine_coordinate_x = field.getNumberAtLocation(i,j);
-                    mine_coordinate_y = field.getNumberAtLocation(i,j);
+                    mine_coordinate_x = i;
+                    mine_coordinate_y = j;
                     break;
                 }
                 else if(field.getNumberAtLocation(i,j) == 0)
@@ -122,9 +123,9 @@ public class FieldTest
                     boolean neighborOfEmptyCell = false;
                     for(int k = i - 1; k <= i + 1; k++)
                     {
-                        for(int l = j - 1; k <= j + 1; j++)
+                        for(int l = j - 1; l <= j + 1; l++)
                         {
-                            if(k >= 0 && l >= 0 && k <= field.getSize() && l < field.getSize() && field.getNumberAtLocation(k,l) == 0)
+                            if(k >= 0 && l >= 0 && k < field.getSize() && l < field.getSize() && field.getNumberAtLocation(k,l) == 0)
                             {
                                 neighborOfEmptyCell = true;
                                 break;
