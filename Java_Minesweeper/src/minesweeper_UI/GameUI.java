@@ -3,6 +3,7 @@ package minesweeper_UI;
 import minesweeper_Code.Game;
 
 import javax.swing.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -52,6 +53,14 @@ public class GameUI
                             if(SwingUtilities.isRightMouseButton(e))
                             {
                                 jbutton.setEnabled(!jbutton.isEnabled());
+                                if(jbutton.getBackground() == Color.RED)
+                                {
+                                    jbutton.setBackground(null);
+                                }
+                                else
+                                {
+                                    jbutton.setBackground(Color.RED);
+                                }
                             }
                             else
                             {
